@@ -58,7 +58,7 @@ Bellow you can see a overview of how each one works.
 
 Item-based collaborative filtering is a form of collaborative filtering for recommender systems based on the similarity between items calculated using people's ratings of those items.
 
-|![Item-based filter](imgs/item_based.jpg)|
+|![Item-based filter](imgs/item_based.JPG)|
 |:--:|
 |*Item-based Recommender System*|
 
