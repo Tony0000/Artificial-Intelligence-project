@@ -70,6 +70,13 @@ First, the system executes a model-building stage by finding the similarity betw
 |:--:|
 |*Pearson Correlation algorithm*|
 
+#### Dataset
+
+GroupLens Research has collected and made available rating data sets from the [MovieLens web site](http://movielens.org). The data sets were collected over various periods of time, depending on the size of the set. Before using these data sets, please review their README files for the usage licenses and other details.
+
+##### MovieLens 100K Dataset
+Stable benchmark dataset. 100,000 ratings from 1000 users on 1700 movies.
+
 #### Execute
 Two arguments are required to run the similarity algorithm:
 
