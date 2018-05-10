@@ -58,32 +58,7 @@ Bellow you can see a overview of how each one works.
 
 Item-based collaborative filtering is a form of collaborative filtering for recommender systems based on the similarity between items calculated using people's ratings of those items.
 
-|![Item-based filter](imgs/item_based.JPG)|
-|:--:|
-|*Item-based Recommender System*|
-
-#### Method
-
-First, the system executes a model-building stage by finding the similarity between all pairs of items. This similarity function can take many forms, such as correlation between ratings or cosine of those rating vectors.
-
-|![Pearson](imgs/pearson_correlation.png)|
-|:--:|
-|*Pearson Correlation algorithm*|
-
-#### Dataset
-
-GroupLens Research has collected and made available rating data sets from the [MovieLens web site](http://movielens.org). The data sets were collected over various periods of time, depending on the size of the set. Before using these data sets, please review their README files for the usage licenses and other details.
-
-##### MovieLens 100K Dataset
-Stable benchmark dataset. 100,000 ratings from 1000 users on 1700 movies.
-
-#### Execute
-Two arguments are required to run the similarity algorithm:
-
-```
-  python recommender.py [userid] [#_recommendations]
-```
-In case of any error in the input format it will display the correct usage.
+You can see more information such a related works and implementation in the README inside the recommender folder.
 
 ### Image Credits
 - 8 puzzle:

@@ -24,7 +24,7 @@ genres_dict = {
     18: 'Western'
 }
 
-# Build the ratings dictionary
+'''Builds the movies ratings by user dictionary'''
 def loadMovieRatings():
     movies = {}
     for line in open('data/ml-100k/u.item'):
@@ -39,6 +39,7 @@ def loadMovieRatings():
 
     return movieRatings
 
+''' Finds the N most similar users to the given user '''
 def __most_similar(movies_ratings, user, n_similar):
     scores = {}
     for u in movies_ratings.keys():
@@ -50,10 +51,12 @@ def __most_similar(movies_ratings, user, n_similar):
     largests = heapq.nlargest(n_similar, heap)
     return largests
 
-def get_recommendations(user, n_recommendations):
+'''Builds a list of movie recommendations based on the user movies'''
+def get_recommendations_by_user(user, n):
     movie_list = set()
     movies_ratings = loadMovieRatings()
     nlargest_ratings = __most_similar(movies_ratings, user, 10)
+    print(movies_ratings[user])
 
     # Build a movies list to search for recommendations
     # Item is a tuple composed of (sim_score, user_id)
@@ -81,11 +84,10 @@ def get_recommendations(user, n_recommendations):
             predicted_rating = my_avg_score + numerator/denominator
         movie_recommendations.append((predicted_rating, mv))
 
-    # heap = [(value, key) for key,value in movie_recommendations.items()]
-    highest = heapq.nlargest(n_recommendations, movie_recommendations)
+    highest = heapq.nlargest(n, movie_recommendations)
     return highest
 
-
+'''Builds a list of movies recommendations using a matrix of genres correlation'''
 def get_recommendations_by_genre(user_preference, n):
     w, h = 18, 18
     genre_matrix = [[0.0 for x in range(w)] for y in range(h)]
@@ -107,10 +109,8 @@ def get_recommendations_by_genre(user_preference, n):
         for i in range(len(genres)):
             if(genres[i] == '1'):
                 title_genres.append(genres_dict[i])
-                # print('found genre '+genres_dict[i])
                 for j in range(len(genres)):
                     if(genres[j] == '1' and i != j):
-                        # print('Match between {} and {}'.format(genres_dict[i], genres_dict[j]))
                         genre_matrix[i][j] += 1.0
         titles_summary[title]['genres'] = title_genres
 
@@ -120,15 +120,12 @@ def get_recommendations_by_genre(user_preference, n):
         for j in range(h-1):
             total = sum(genre_matrix[i])
             genre_matrix[i][j] = genre_matrix[i][j] / total
-        # print(genre_matrix[i])
 
     for user in movies_ratings.keys():
         for movie in movies_ratings[user].keys():
             titles_summary[movie]['sum_score'] += movies_ratings[user][movie]
             titles_summary[movie]['num_score'] += 1
 
-    # for key in titles_summary.keys():
-    #     print('{} - {}'.format(key,titles_summary[key]))
     movies_recommendations = []
     for title in titles_summary.keys():
         r_points = 0
