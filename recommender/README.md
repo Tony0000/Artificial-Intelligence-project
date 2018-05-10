@@ -24,7 +24,7 @@ python recommender.py genre [num of recommendations] [list of genres...]
 
 Item-based collaborative filtering is a form of collaborative filtering for recommender systems based on the similarity between items calculated using people's ratings of those items.
 
-|![Item-based filter](/imgs/item_based.jpg)|
+|![Item-based filter](/imgs/item_based.JPG)|
 |:--:|
 |*Figure 1: Item-based Recommender System*|
 
@@ -74,7 +74,7 @@ Where X is the average rating of user X and Yn is the rating by each other user 
 
 #### Genre-by-genre similarity
 
-Genre correlations are initially calculated based on genre combinations of each movie in a database. All movies in the movie database have at least one genre. In other words, each movie has a genre combination composed of at least one genre. We repeat this procedure for all movies in the database and calculate the genre correlations by percentages. This way we will build a genre correlation percentage matrix. 
+Genre correlations are initially calculated based on genre combinations of each movie in a database. All movies in the movie database have at least one genre. In other words, each movie has a genre combination composed of at least one genre. We repeat this procedure for all movies in the database and calculate the genre correlations by percentages. This way we will build a genre correlation percentage matrix.
 
 The system selects a genre and counts the number of the other genres for each movie. For example, in figure 2 if movie A has the genre combination of G1, G2, and G5, then G1 is selected as a criterion genre and we increase the combination counting with G2 and G5 by 1. Next, G2 is selected as a criterion genre and we increase
 the combination counting with only G5 by 1 again.
